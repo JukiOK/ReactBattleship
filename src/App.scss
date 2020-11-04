@@ -1,0 +1,12 @@
+@import './constants/colors';
+
+.page {
+  background-color: $black;
+  height: 100vh;
+
+  .ships-container {
+    background-color: $darkgray;
+    width: 400px;
+    height: 400px;
+  }
+}
