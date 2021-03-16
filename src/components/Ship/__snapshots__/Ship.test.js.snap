@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`match snapshot 1`] = `
+<div>
+  <div
+    className="ship-container"
+    data-testid="ship-boat"
+  >
+    <div
+      className="ship"
+      style={
+        Object {
+          "backgroundColor": "#FFD046",
+        }
+      }
+    >
+      #FFD046
+    </div>
+  </div>
+</div>
+`;

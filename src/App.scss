@@ -4,9 +4,17 @@
   background-color: $black;
   height: 100vh;
 
+
   .ships-container {
     background-color: $darkgray;
-    width: 400px;
-    height: 400px;
+    height: 420px;
+    .ships-row {
+      display: flex;
+    }
+
+    .ship-content {
+      margin: 5px;
+    }
   }
+
 }

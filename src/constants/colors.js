@@ -4,4 +4,5 @@ export default {
   green: '#06D6A0',
   blue: '#29FAFA',
   purple: '#9959CD',
+  mediumblue: '#170677',
 }
