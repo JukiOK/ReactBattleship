@@ -7,7 +7,7 @@ require('./board.scss');
 export default function Board(props) {
 
   const [type, setType] = useState('');
-  const {shipsList, shipType} = props;
+  const {shipsList, shipType, changeBoard} = props;
 
   useEffect(() => {
     setType(shipType);
@@ -31,11 +31,11 @@ export default function Board(props) {
               [1,2,3,4,5,6,7,8,9,10].map((indCol) => {
                   if(shipsList && shipsList[0].x === indLine && shipsList[0].y === indCol) {
                     return (
-                      <Square key={indCol} color={colorsObj[type]}/>
+                      <Square key={indCol} color={colorsObj[type]} x={indLine} y={indCol} changeBoard={(x, y) => changeBoard(x, y)}/>
                     )
                   } else {
                     return (
-                      <Square key={indCol}/>
+                      <Square key={indCol} x={indLine} y={indCol} changeBoard={(x, y) => changeBoard(x, y)}/>
                     )
                   }
                 }

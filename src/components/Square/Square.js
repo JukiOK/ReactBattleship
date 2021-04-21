@@ -6,13 +6,14 @@ require('./square.scss');
 
 function Square(props) {
 
-  const { color } = props;
+  const { color, x, y, changeBoard } = props;
 
   const[{isOver}, drop] = useDrop({
     accept: ItemTypes.SHIP,
     collect: monitor => ({
       isOver: !!monitor.isOver()
-    })
+    }),
+    drop: () => changeBoard(x, y)
   })
 
   return (

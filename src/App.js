@@ -8,6 +8,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 
 function App() {
   const [selectedShip, setSelectedShip] = useState();
+  const [shipsP1, setShipsP1] = useState([]);
 
   function handleSelectShip(type) {
     setSelectedShip(type);
@@ -21,11 +22,16 @@ function App() {
     )
   }
 
+  function changeBoard(x, y) {
+    let p1 = shipsP1.slice();
+    setShipsP1(p1.push({x, y}));
+  }
+
   return (
     <div className="page">
       <DndProvider backend={HTML5Backend}>
         <button>Start</button>
-        <Board shipType={selectedShip}/>
+        <Board shipType={selectedShip} setShipsP1={(value) => setShipsP1(value)} changeBoard={(x, y) => changeBoard(x, y)}/>
 
         <div className="selection-ship-container">
           <div className="ships-container" >
