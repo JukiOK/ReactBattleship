@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Square from '../Square/Square';
 import colors from '../../constants/colors.js';
+import Ship from '../Ship/Ship';
 
 require('./board.scss');
 
@@ -13,37 +14,33 @@ export default function Board(props) {
     setType(shipType);
   }, [shipType])
 
-  const colorsObj = {
-    'boat': colors.yellow,
-    'destroyer': colors.green,
-    'submarine': colors.blue,
-    'carrier': colors.purple,
-  }
-
-
-
   return (
     <div className="board-container">
       {
-        [1,2,3,4,5,6,7,8,9,10].map((indLine) => (
+        shipsList.map((ship) => {
+          let posX = ship.x * 40;
+          let posY = ship.y * 40;
+          return (
+            <div style={{position: 'absolute', top: posX, left: posY}}>
+              <Ship type={ship.type} id={ship.id} key={ship.id} />
+            </div>
+          )
+        })
+      }
+      {
+        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((indLine) => (
           <div key={indLine} style={{display: 'flex'}}>
             {
-              [1,2,3,4,5,6,7,8,9,10].map((indCol) => {
-                  if(shipsList && shipsList[0].x === indLine && shipsList[0].y === indCol) {
-                    return (
-                      <Square key={indCol} color={colorsObj[type]} x={indLine} y={indCol} changeBoard={(x, y) => changeBoard(x, y)}/>
-                    )
-                  } else {
-                    return (
-                      <Square key={indCol} x={indLine} y={indCol} changeBoard={(x, y) => changeBoard(x, y)}/>
-                    )
-                  }
-                }
-              )
+              [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((indCol) => {                    
+                return (
+                  <Square key={indCol} x={indLine} y={indCol} changeBoard={(x, y, item) => changeBoard(x, y, item)}/>
+                )
+              })
             }
           </div>
         ))
       }
+      
     </div>
   )
 }

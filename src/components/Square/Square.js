@@ -13,7 +13,7 @@ function Square(props) {
     collect: monitor => ({
       isOver: !!monitor.isOver()
     }),
-    drop: () => changeBoard(x, y)
+    drop: (item) => changeBoard(x, y, item)
   })
 
   return (

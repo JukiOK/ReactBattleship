@@ -6,15 +6,26 @@ import { ItemTypes } from '../../constants/ItemTypes';
 require('./ship.scss');
 
 function Ship(props) {
-  const [{isDragging}, drag] = useDrag({
-      item: {
-        type: ItemTypes.SHIP,
-      },
-      collect: monitor => ({
-        isDragging: !!monitor.isDragging()
-      })
+  const [{isDragging, itemMonitor}, drag] = useDrag({
+    item: {
+      type: ItemTypes.SHIP,
+      typeShip: props.type,
+      id: props.id,
+    },
+    collect: monitor => ({
+      isDragging: !!monitor.isDragging(),
+      itemMonitor: monitor.getItem(),
     })
+  })
+  useEffect(() => {
+    document.addEventListener('keydown', rotate);
+  }, []);
 
+  function rotate() {
+    console.log('bla');
+  }
+
+  console.log(itemMonitor);    
   function ship() {
     let color;
     switch (props.type) {

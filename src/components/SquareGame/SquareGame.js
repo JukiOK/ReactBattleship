@@ -1,4 +1,4 @@
-function Square(props) {
+function SquareGame(props) {
 
   const { color } = props;
   return (
@@ -8,4 +8,4 @@ function Square(props) {
   )
 }
 
-export default Square;
+export default SquareGame;
